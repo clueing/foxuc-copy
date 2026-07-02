@@ -1,36 +1,26 @@
 "use client"
 
-import { cn } from "@/lib/utils"
-
-// 联运介绍页面横幅组件
-interface InterBannerProps {
-  className?: string
-}
-
-export default function InterBanner({ className }: InterBannerProps) {
+/* 联运介绍页面横幅组件 */
+export default function InterBanner() {
   return (
-    <section
-      className={cn(
-        "relative flex items-center justify-center overflow-hidden",
-        "h-[400px] w-full bg-gradient-to-r from-amber-900 via-orange-800 to-red-900",
-        className
-      )}
-    >
-      {/* 背景装饰 */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute left-1/4 top-1/4 h-64 w-64 rounded-full bg-orange-500 blur-[100px]" />
-        <div className="absolute bottom-1/4 right-1/4 h-64 w-64 rounded-full bg-red-500 blur-[100px]" />
+    <div className="relative w-full h-[480px] overflow-hidden min-w-[1250px]">
+      <div
+        className="absolute left-1/2 -translate-x-1/2 w-[1920px] h-full bg-no-repeat bg-cover"
+        style={{
+          backgroundImage: "url('/images/inter/inter-banner.png')",
+          backgroundPosition: "top",
+        }}
+      >
+        {/* 内容区域 */}
+        <div className="relative z-10 pt-[140px] pl-[460px]">
+          <h1 className="text-[58px] font-bold leading-tight text-[#222]">
+            全球招募
+          </h1>
+          <p className="text-[32px] font-light text-[#a73f1d]">
+            海外棋牌手游战略合作伙伴
+          </p>
+        </div>
       </div>
-
-      {/* 内容区域 */}
-      <div className="relative z-10 text-center">
-        <h1 className="mb-4 text-4xl font-bold text-white md:text-[48px]">
-          全球招募
-        </h1>
-        <p className="text-lg text-gray-200 md:text-[18px]">
-          海外棋牌手游战略合作伙伴
-        </p>
-      </div>
-    </section>
+    </div>
   )
 }
