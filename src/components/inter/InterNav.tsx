@@ -13,12 +13,12 @@ export default function InterNav({ className, activeTab = "intro" }: InterNavPro
   // 导航链接数据
   const navLinks = [
     {
-      href: "/inter/index.html",
+      href: "/inter",
       label: "联运介绍",
       isActive: activeTab === "intro"
     },
     {
-      href: "/inter/tech.html",
+      href: "/inter/tech",
       label: "技术服务",
       isActive: activeTab === "tech"
     }

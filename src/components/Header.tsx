@@ -11,42 +11,42 @@ const navItems = [
   {
     label: "国际",
     sub: "International",
-    href: "/inter/index.html",
+    href: "/inter",
     children: [
-      { label: "联运介绍", href: "/inter/index.html" },
-      { label: "技术服务", href: "/inter/tech.html" },
+      { label: "联运介绍", href: "/inter" },
+      { label: "技术服务", href: "/inter/tech" },
     ],
   },
   {
     label: "产品",
     sub: "PRODUCT",
-    href: "/product-detail/hw/game-app.html",
+    href: "/product",
     children: [
-      { label: "U3D 至尊版", href: "/product-detail/hw/game-app.html" },
-      { label: "H5 环球版", href: "/product-detail/zy/game-app.html" },
-      { label: "H5 极速版", href: "/product-detail/qj/game-u3d-eng.html" },
+      { label: "U3D 至尊版", href: "/product" },
+      { label: "H5 环球版", href: "/product" },
+      { label: "H5 极速版", href: "/product" },
     ],
   },
   {
     label: "资讯",
     sub: "NEWS",
-    href: "/news/original.html",
+    href: "/news",
     children: [
-      { label: "棋牌资讯", href: "/news/original.html" },
-      { label: "网狐动态", href: "/news/qpnews.html" },
+      { label: "棋牌资讯", href: "/news" },
+      { label: "网狐动态", href: "/news" },
     ],
   },
   {
     label: "关于",
     sub: "ABOUT",
-    href: "/about/index.html",
+    href: "/about",
     children: [
-      { label: "关于我们", href: "/about/index.html" },
-      { label: "企业文化", href: "/about/culture.html" },
-      { label: "发展历程", href: "/about/course.html" },
+      { label: "关于我们", href: "/about" },
+      { label: "企业文化", href: "/about" },
+      { label: "发展历程", href: "/about" },
     ],
   },
-  { label: "联系", sub: "CONTACT", href: "/contact/index.html" },
+  { label: "联系", sub: "CONTACT", href: "/contact" },
 ];
 
 /* 固定导航栏组件 */
