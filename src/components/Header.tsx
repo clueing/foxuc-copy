@@ -34,10 +34,10 @@ const navItems = [
     label: "资讯",
     sub: "NEWS",
     href: "/news",
-    match: ["/news"],
+    match: ["/news", "/news/qpnews"],
     children: [
       { label: "棋牌资讯", href: "/news" },
-      { label: "网狐动态", href: "/news" },
+      { label: "网狐动态", href: "/news/qpnews" },
     ],
   },
   {
