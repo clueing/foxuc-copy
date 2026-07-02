@@ -187,28 +187,36 @@ export default function HeroCarousel() {
       {/* 左箭头 */}
       <button
         onClick={goToPrev}
-        className="absolute left-[30px] top-1/2 -translate-y-1/2 z-20 w-[70px] h-[160px] bg-[url('/images/home/banner-focus.png')] bg-no-repeat bg-left hover:bg-[position:-70px_0] active:bg-[position:-140px_0] transition-all"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/30 text-white backdrop-blur-sm transition-all duration-300 hover:bg-black/50"
         aria-label="上一张"
-      />
+      >
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
 
       {/* 右箭头 */}
       <button
         onClick={goToNext}
-        className="absolute right-[30px] top-1/2 -translate-y-1/2 z-20 w-[70px] h-[160px] bg-[url('/images/home/banner-focus.png')] bg-no-repeat bg-[position:0_-160px] hover:bg-[position:-70px_-160px] active:bg-[position:-140px_-160px] transition-all"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/30 text-white backdrop-blur-sm transition-all duration-300 hover:bg-black/50"
         aria-label="下一张"
-      />
+      >
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
 
       {/* 底部圆点导航 */}
-      <div className="absolute bottom-[34px] left-1/2 -translate-x-1/2 z-20 h-[34px] leading-[34px] bg-[url('/images/home/banner-bottom.png')] bg-no-repeat px-4">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
             className={cn(
-              "inline-block mx-[6px] rounded-full transition-all duration-300 align-middle",
+              "w-3 h-3 rounded-full transition-all duration-300",
               index === currentIndex
-                ? "w-[14px] h-[14px] bg-[#e60000]"
-                : "w-[10px] h-[10px] bg-[#333]"
+                ? "bg-white scale-110"
+                : "bg-white/50 hover:bg-white/75"
             )}
             aria-label={`跳转到第 ${index + 1} 张幻灯片`}
           />
