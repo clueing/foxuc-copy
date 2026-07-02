@@ -3,15 +3,17 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 /* 导航菜单数据 */
 const navItems = [
-  { label: "首页", sub: "HOME", href: "/", active: true },
+  { label: "首页", sub: "HOME", href: "/", match: ["/"] },
   {
     label: "国际",
     sub: "International",
     href: "/inter",
+    match: ["/inter", "/inter/tech"],
     children: [
       { label: "联运介绍", href: "/inter" },
       { label: "技术服务", href: "/inter/tech" },
@@ -21,6 +23,7 @@ const navItems = [
     label: "产品",
     sub: "PRODUCT",
     href: "/product",
+    match: ["/product"],
     children: [
       { label: "U3D 至尊版", href: "/product" },
       { label: "H5 环球版", href: "/product" },
@@ -31,6 +34,7 @@ const navItems = [
     label: "资讯",
     sub: "NEWS",
     href: "/news",
+    match: ["/news"],
     children: [
       { label: "棋牌资讯", href: "/news" },
       { label: "网狐动态", href: "/news" },
@@ -40,18 +44,27 @@ const navItems = [
     label: "关于",
     sub: "ABOUT",
     href: "/about",
+    match: ["/about"],
     children: [
       { label: "关于我们", href: "/about" },
       { label: "企业文化", href: "/about" },
       { label: "发展历程", href: "/about" },
     ],
   },
-  { label: "联系", sub: "CONTACT", href: "/contact" },
+  { label: "联系", sub: "CONTACT", href: "/contact", match: ["/contact"] },
 ];
 
 /* 固定导航栏组件 */
 export default function Header() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const pathname = usePathname();
+
+  /* 判断导航项是否激活 */
+  const isActive = (item: (typeof navItems)[number]) => {
+    return item.match.some(
+      (path) => pathname === path || (path !== "/" && pathname.startsWith(path))
+    );
+  };
 
   return (
     <div className="fixed top-0 left-0 right-0 z-[99999] h-[68px]">
@@ -71,83 +84,91 @@ export default function Header() {
 
           {/* 导航链接 */}
           <ul className="flex items-center ml-[35px] mr-[35px] h-full">
-            {navItems.map((item, index) => (
-              <li
-                key={item.label}
-                className="relative h-[46px] mt-[16px]"
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-              >
-                {/* 分隔线 */}
-                {index > 0 && (
-                  <span className="absolute left-[-20px] top-[15px]">
-                    <Image
-                      src="/images/line.png"
-                      alt=""
-                      width={1}
-                      height={20}
-                    />
-                  </span>
-                )}
-
-                {/* 导航链接 */}
-                <Link
-                  href={item.href}
-                  className={cn(
-                    "inline-block w-[119px] text-white text-sm text-center transition-colors duration-300",
-                    item.active ? "text-[#ff0101]" : "hover:text-[#ff0101]"
-                  )}
+            {navItems.map((item, index) => {
+              const active = isActive(item);
+              return (
+                <li
+                  key={item.label}
+                  className="relative h-[46px] mt-[16px]"
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
                 >
-                  {item.label}
-                  <p
-                    className={cn(
-                      "text-xs mt-[-4px] transform scale-75",
-                      item.active
-                        ? "text-white"
-                        : "text-[#938d8b] group-hover:text-white"
-                    )}
-                    style={{ fontFamily: "Verdana, sans-serif" }}
-                  >
-                    {item.sub}
-                  </p>
-                </Link>
+                  {/* 分隔线 */}
+                  {index > 0 && (
+                    <span className="absolute left-[-20px] top-[15px]">
+                      <Image
+                        src="/images/line.png"
+                        alt=""
+                        width={1}
+                        height={20}
+                      />
+                    </span>
+                  )}
 
-                {/* 下拉子菜单 */}
-                {item.children && (
-                  <div
+                  {/* 导航链接 */}
+                  <Link
+                    href={item.href}
                     className={cn(
-                      "absolute top-[45px] left-1/2 -translate-x-1/2 text-center transition-all duration-100",
-                      item.children.length > 2 ? "w-[368px]" : "w-[246px]",
-                      "bg-[url('/images/nav-long.png')] bg-no-repeat",
-                      hoveredIndex === index
-                        ? "opacity-100 visible"
-                        : "opacity-0 invisible"
+                      "inline-block w-[119px] text-white text-sm text-center transition-colors duration-300",
+                      active ? "text-[#ff0101]" : "hover:text-[#ff0101]"
                     )}
                   >
-                    {item.children.map((child, childIndex) => (
-                      <span key={child.label}>
-                        <Link
-                          href={child.href}
-                          className="inline-block w-[99px] text-sm text-[#ccc] align-middle hover:text-white transition-colors"
-                        >
-                          {child.label}
-                        </Link>
-                        {childIndex < item.children.length - 1 && (
-                          <span className="inline-block mt-[6px] align-middle">
-                            <Image
-                              src="/images/line.png"
-                              alt=""
-                              width={1}
-                              height={16}
-                            />
+                    {item.label}
+                    <p
+                      className={cn(
+                        "text-xs mt-[-4px] transform scale-75",
+                        active ? "text-white" : "text-[#938d8b]"
+                      )}
+                      style={{ fontFamily: "Verdana, sans-serif" }}
+                    >
+                      {item.sub}
+                    </p>
+                  </Link>
+
+                  {/* 下拉子菜单 - 黑色半透明背景 */}
+                  {item.children && (
+                    <div
+                      className={cn(
+                        "absolute top-[45px] left-1/2 -translate-x-1/2 text-center transition-all duration-100",
+                        item.children.length > 2 ? "w-[368px]" : "w-[246px]",
+                        "bg-black/80 backdrop-blur-sm rounded-b-lg",
+                        hoveredIndex === index
+                          ? "opacity-100 visible"
+                          : "opacity-0 invisible"
+                      )}
+                    >
+                      <div className="py-2">
+                        {item.children.map((child, childIndex) => (
+                          <span key={child.label}>
+                            <Link
+                              href={child.href}
+                              className={cn(
+                                "inline-block w-[99px] text-sm align-middle transition-colors",
+                                pathname === child.href
+                                  ? "text-[#ff0101]"
+                                  : "text-[#ccc] hover:text-white"
+                              )}
+                            >
+                              {child.label}
+                            </Link>
+                            {childIndex < item.children.length - 1 && (
+                              <span className="inline-block mt-[6px] align-middle">
+                                <Image
+                                  src="/images/line.png"
+                                  alt=""
+                                  width={1}
+                                  height={16}
+                                />
+                              </span>
+                            )}
                           </span>
-                        )}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </li>
-            ))}
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </li>
+              );
+            })}
           </ul>
 
           {/* 电话号码 */}
