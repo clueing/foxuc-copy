@@ -9,26 +9,44 @@ interface CaseItem {
 }
 
 /* 单个案例卡片组件 */
-export default function CaseCard({ item }: { item: CaseItem }) {
+export default function CaseCard({
+  item,
+  isFirst = false,
+}: {
+  item: CaseItem;
+  isFirst?: boolean;
+}) {
   return (
-    <li className="flex flex-col gap-6 md:flex-row">
+    <li
+      className={cn(
+        "flex items-center pb-[62px] border-b border-[#dedede]",
+        !isFirst && "mt-[62px]"
+      )}
+    >
       {/* 案例图片 */}
-      <div className="shrink-0 overflow-hidden rounded-lg md:w-[400px]">
+      <div className="shrink-0 w-[354px] h-[240px] rounded-[12px] overflow-hidden shadow-[0_2px_13px_#ebebeb]">
         <Image
           src={item.image}
           alt={item.title}
-          width={400}
-          height={250}
-          className="h-auto w-full object-cover transition-transform duration-300 hover:scale-105"
+          width={354}
+          height={240}
+          className="w-full h-full object-cover transition-transform duration-750 hover:scale-110"
         />
       </div>
+
       {/* 案例介绍 */}
-      <section className="flex flex-col justify-center">
-        <h2 className="mb-3 text-2xl font-bold text-gray-800">
+      <section className="w-[750px] ml-[40px]">
+        <h2 className="text-[36px] font-light text-[#333] mb-[16px]">
           {item.title}
         </h2>
-        <p className="leading-relaxed text-gray-600">{item.description}</p>
+        <p className="text-[16px] text-[#666] leading-[1.8] font-light">
+          {item.description}
+        </p>
       </section>
     </li>
   );
+}
+
+function cn(...classes: (string | undefined | false)[]) {
+  return classes.filter(Boolean).join(" ");
 }

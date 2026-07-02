@@ -97,7 +97,7 @@ export default function Products({ className }: { className?: string }) {
             {/* 按钮组 - 右对齐 */}
             <div className="mb-8 flex justify-end gap-4">
               <Link
-                href="/products"
+                href="/product"
                 className="inline-flex h-10 items-center justify-center rounded-lg border border-[#e44c40] px-6 text-sm font-medium text-[#e44c40] transition-colors hover:bg-[#e44c40] hover:text-white"
               >
                 更多平台

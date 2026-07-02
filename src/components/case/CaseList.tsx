@@ -77,9 +77,13 @@ const cases = [
 /* 案例列表组件 */
 export default function CaseList() {
   return (
-    <ul className="flex flex-col gap-10">
-      {cases.map((caseItem) => (
-        <CaseCard key={caseItem.id} item={caseItem} />
+    <ul>
+      {cases.map((caseItem, index) => (
+        <CaseCard
+          key={caseItem.id}
+          item={caseItem}
+          isFirst={index === 0}
+        />
       ))}
     </ul>
   );

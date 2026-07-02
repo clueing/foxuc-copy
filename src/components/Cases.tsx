@@ -111,8 +111,9 @@ export default function Cases() {
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {cases.map((caseItem) => (
-              <div
+              <Link
                 key={caseItem.id}
+                href="/case"
                 className="group flex w-64 shrink-0 flex-col items-center rounded-lg bg-gray-50 p-4 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-lg"
               >
                 {/* 案例图片 */}
@@ -128,7 +129,7 @@ export default function Cases() {
                 <h3 className="text-center text-sm font-medium text-gray-700 transition-colors group-hover:text-red-500">
                   {caseItem.name}
                 </h3>
-              </div>
+              </Link>
             ))}
           </div>
 
