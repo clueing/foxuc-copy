@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 
 /* 浮动按钮组件 - 在线留言和客服中心 */
@@ -8,24 +8,21 @@ export default function FloatingButtons() {
   const [showService, setShowService] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
 
-  /* 客服面板高度变化时，推动在线留言按钮上移 */
-  const servicePanelHeight = showService ? 590 : 0;
-  const messageTopBase = 17; // 基础顶部位置 (%)
-  const messageTopShift = showService ? -5 : 0; // 被顶上去的偏移 (%)
-
   return (
     <>
-      {/* 客服中心 */}
+      {/* 客服中心 - z-index 较低 */}
       <div
-        className="fixed left-0 z-[999]"
+        className="fixed z-[998]"
         style={{
-          top: "33%",
+          left: 0,
+          top: "50%",
+          marginTop: "-70px",
           width: "171px",
-          transform: showService ? "translateX(0)" : "translateX(-171px)",
+          transform: showService ? "translateX(0)" : "translateX(-131px)",
           transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
         }}
       >
-        {/* 展开面板 */}
+        {/* 面板内容 */}
         <div className="bg-white rounded-r-[14px] shadow-[1px_2px_10px_#a5a5a5] pt-[2px]">
           <div className="w-[168px] h-[42px] mx-auto bg-[url('/images/service-top.png')] bg-no-repeat flex items-center justify-center">
             <span className="text-[20px] text-white">客服中心</span>
@@ -46,9 +43,9 @@ export default function FloatingButtons() {
           </div>
         </div>
 
-        {/* 展开按钮 */}
+        {/* 按钮 */}
         <div
-          className="absolute top-[48px] right-[-49px] w-[40px] h-[140px] bg-[url('/images/service-btn.png')] bg-no-repeat cursor-pointer"
+          className="absolute top-[48px] right-[-40px] w-[40px] h-[140px] bg-[url('/images/service-btn.png')] bg-no-repeat cursor-pointer"
           onClick={() => setShowService(!showService)}
         >
           <div
@@ -61,14 +58,15 @@ export default function FloatingButtons() {
         </div>
       </div>
 
-      {/* 在线留言 - 被客服面板顶上去 */}
+      {/* 在线留言 - z-index 较高，遮挡客服按钮 */}
       <div
-        className="fixed left-0 z-[998]"
+        className="fixed z-[999]"
         style={{
-          top: showService ? "5%" : "17%",
+          left: 0,
+          top: showService ? "10%" : "20%",
           width: "410px",
           padding: "2px 2px 2px 0",
-          transform: showMessage ? "translateX(0)" : "translateX(-410px)",
+          transform: showMessage ? "translateX(0)" : "translateX(-370px)",
           transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), top 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
         }}
       >
@@ -110,7 +108,7 @@ export default function FloatingButtons() {
           </div>
         </div>
 
-        {/* 展开按钮 */}
+        {/* 按钮 */}
         <div
           className="absolute top-[88px] right-[-40px] w-[40px] h-[140px] bg-[url('/images/message-btn.png')] bg-no-repeat cursor-pointer"
           onClick={() => setShowMessage(!showMessage)}
