@@ -138,7 +138,7 @@ export default function Header() {
                           : "opacity-0 invisible"
                       )}
                     >
-                      <div className="py-2">
+                      <div>
                         {item.children.map((child, childIndex) => (
                           <span key={child.label}>
                             <Link
