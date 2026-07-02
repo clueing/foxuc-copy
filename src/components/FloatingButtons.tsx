@@ -5,7 +5,7 @@ import Image from "next/image";
 
 /* 浮动按钮组件 - 在线留言和客服中心 */
 export default function FloatingButtons() {
-  const [showService, setShowService] = useState(false);
+  const [showService, setShowService] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
 
   return (
@@ -15,7 +15,7 @@ export default function FloatingButtons() {
         className="fixed z-[998]"
         style={{
           left: 0,
-          top: "50%",
+          top: "40%",
           marginTop: "-70px",
           width: "171px",
           transform: showService ? "translateX(0)" : "translateX(-171px)",
@@ -24,9 +24,7 @@ export default function FloatingButtons() {
       >
         {/* 面板内容 */}
         <div className="bg-white rounded-r-[14px] shadow-[1px_2px_10px_#a5a5a5] pt-[2px]">
-          <div className="w-[168px] h-[42px] mx-auto bg-[url('/images/service-top.png')] bg-no-repeat flex items-center justify-center">
-            <span className="text-[20px] text-white">客服中心</span>
-          </div>
+          <div className="w-[168px] h-[42px] mx-auto bg-[url('/images/service-top.png')] bg-no-repeat flex items-center justify-center"></div>
           <div className="w-[152px] py-4 mx-auto border-b border-dashed border-[#e5e5e5]">
             <p className="text-[18px] text-left pl-1 text-black mb-1">游戏定制</p>
             <Image src="/images/liu-qr.png" alt="游戏定制" width={144} height={144} className="w-[144px]" />
@@ -48,7 +46,7 @@ export default function FloatingButtons() {
         className="fixed z-[998] cursor-pointer"
         style={{
           left: showService ? "171px" : "0",
-          top: "50%",
+          top: "40%",
           marginTop: "-22px",
           width: "40px",
           height: "140px",
@@ -72,7 +70,7 @@ export default function FloatingButtons() {
         className="fixed z-[999]"
         style={{
           left: 0,
-          top: showService ? "10%" : "20%",
+          top: showService ? "5%" : "15%",
           width: "410px",
           padding: "2px 2px 2px 0",
           transform: showMessage ? "translateX(0)" : "translateX(-410px)",
@@ -122,7 +120,7 @@ export default function FloatingButtons() {
         className="fixed z-[999] cursor-pointer"
         style={{
           left: showMessage ? "410px" : "0",
-          top: showService ? "calc(10% + 88px)" : "calc(20% + 88px)",
+          top: showService ? "calc(5% + 88px)" : "calc(15% + 88px)",
           width: "40px",
           height: "140px",
           backgroundImage: "url('/images/message-btn.png')",
