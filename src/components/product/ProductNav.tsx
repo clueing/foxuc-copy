@@ -27,54 +27,60 @@ const products = [
   },
 ];
 
-/* 产品导航组件 */
+/* 产品右侧固定导航组件 */
 export default function ProductNav() {
   const pathname = usePathname();
 
   return (
-    <div className="bg-white border-b border-gray-200">
-      <div className="w-[1200px] mx-auto">
-        {/* 标题栏 */}
-        <div className="py-4 border-b border-gray-100">
-          <span className="text-lg font-bold text-gray-800">网狐产品</span>
-        </div>
+    <div className="fixed right-[10px] top-[394px] z-[99] w-[200px] bg-white rounded-[14px] shadow-[0_2px_13px_#ebebeb]">
+      {/* 标题栏 */}
+      <div
+        className="w-[196px] h-[42px] ml-[2px] mt-[2px] text-white text-[18px] leading-[42px] bg-[url('/images/product/bg-title-top.png')] bg-no-repeat"
+        style={{ paddingLeft: "85px" }}
+      >
+        网狐产品
+      </div>
 
-        {/* 产品切换按钮 */}
-        <div className="flex justify-center gap-8 py-6">
-          {products.map((product) => {
-            const isActive = pathname === product.href;
-            return (
-              <Link
-                key={product.href}
-                href={product.href}
+      {/* 产品切换按钮 */}
+      <div className="px-2 pb-2">
+        {products.map((product, index) => {
+          const isActive = pathname === product.href;
+          return (
+            <Link
+              key={product.href}
+              href={product.href}
+              className={cn(
+                "block text-center transition-colors",
+                index === 0 ? "mt-3" : "mt-1",
+                "group"
+              )}
+            >
+              <Image
+                src={product.icon}
+                alt={product.label}
+                width={196}
+                height={100}
+                className="w-full h-auto"
+              />
+              <p
                 className={cn(
-                  "flex items-center gap-3 px-6 py-3 rounded-lg transition-all",
-                  isActive
-                    ? "bg-red-50 border-2 border-red-500"
-                    : "bg-gray-50 border-2 border-transparent hover:border-gray-300"
+                  "text-[14px] transition-colors",
+                  isActive ? "text-red-500" : "text-[#222] group-hover:text-red-500"
                 )}
               >
-                <Image
-                  src={product.icon}
-                  alt={product.label}
-                  width={48}
-                  height={48}
-                />
-                <div>
-                  <p
-                    className={cn(
-                      "text-base font-medium",
-                      isActive ? "text-red-500" : "text-gray-800"
-                    )}
-                  >
-                    {product.label}
-                  </p>
-                  <p className="text-xs text-gray-500">{product.english}</p>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+                {product.label}
+                <span
+                  className={cn(
+                    "ml-[5px] font-light transition-colors",
+                    isActive ? "text-red-500" : "text-[#666] group-hover:text-red-500"
+                  )}
+                >
+                  {product.english}
+                </span>
+              </p>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );
