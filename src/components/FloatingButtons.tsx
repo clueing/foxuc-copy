@@ -18,7 +18,7 @@ export default function FloatingButtons() {
           top: "50%",
           marginTop: "-70px",
           width: "171px",
-          transform: showService ? "translateX(0)" : "translateX(-131px)",
+          transform: showService ? "translateX(0)" : "translateX(-171px)",
           transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
         }}
       >
@@ -42,20 +42,29 @@ export default function FloatingButtons() {
             <Image src="/images/phone.png" alt="服务热线" width={133} height={40} className="mt-2 mx-auto" />
           </div>
         </div>
-
-        {/* 按钮 */}
+      </div>
+      {/* 客服按钮 - 独立于面板，始终可见 */}
+      <div
+        className="fixed z-[998] cursor-pointer"
+        style={{
+          left: showService ? "171px" : "0",
+          top: "50%",
+          marginTop: "-22px",
+          width: "40px",
+          height: "140px",
+          backgroundImage: "url('/images/service-btn.png')",
+          backgroundRepeat: "no-repeat",
+          transition: "left 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+        }}
+        onClick={() => setShowService(!showService)}
+      >
         <div
-          className="absolute top-[48px] right-[-40px] w-[40px] h-[140px] bg-[url('/images/service-btn.png')] bg-no-repeat cursor-pointer"
-          onClick={() => setShowService(!showService)}
-        >
-          <div
-            className="mt-[113px] ml-[10px] w-[15px] h-[15px] bg-[url('/images/open-arrow.png')] bg-no-repeat"
-            style={{
-              transform: showService ? "rotate(180deg)" : "rotate(0deg)",
-              transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-            }}
-          />
-        </div>
+          className="mt-[113px] ml-[10px] w-[15px] h-[15px] bg-[url('/images/open-arrow.png')] bg-no-repeat"
+          style={{
+            transform: showService ? "rotate(180deg)" : "rotate(0deg)",
+            transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+          }}
+        />
       </div>
 
       {/* 在线留言 - z-index 较高，遮挡客服按钮 */}
@@ -66,7 +75,7 @@ export default function FloatingButtons() {
           top: showService ? "10%" : "20%",
           width: "410px",
           padding: "2px 2px 2px 0",
-          transform: showMessage ? "translateX(0)" : "translateX(-370px)",
+          transform: showMessage ? "translateX(0)" : "translateX(-410px)",
           transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), top 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
         }}
       >
@@ -107,20 +116,28 @@ export default function FloatingButtons() {
             </div>
           </div>
         </div>
-
-        {/* 按钮 */}
+      </div>
+      {/* 在线留言按钮 - 独立于面板，始终可见 */}
+      <div
+        className="fixed z-[999] cursor-pointer"
+        style={{
+          left: showMessage ? "410px" : "0",
+          top: showService ? "calc(10% + 88px)" : "calc(20% + 88px)",
+          width: "40px",
+          height: "140px",
+          backgroundImage: "url('/images/message-btn.png')",
+          backgroundRepeat: "no-repeat",
+          transition: "left 0.5s cubic-bezier(0.4, 0, 0.2, 1), top 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+        }}
+        onClick={() => setShowMessage(!showMessage)}
+      >
         <div
-          className="absolute top-[88px] right-[-40px] w-[40px] h-[140px] bg-[url('/images/message-btn.png')] bg-no-repeat cursor-pointer"
-          onClick={() => setShowMessage(!showMessage)}
-        >
-          <div
-            className="mt-[113px] ml-[10px] w-[15px] h-[15px] bg-[url('/images/open-arrow.png')] bg-no-repeat"
-            style={{
-              transform: showMessage ? "rotate(180deg)" : "rotate(0deg)",
-              transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-            }}
-          />
-        </div>
+          className="mt-[113px] ml-[10px] w-[15px] h-[15px] bg-[url('/images/open-arrow.png')] bg-no-repeat"
+          style={{
+            transform: showMessage ? "rotate(180deg)" : "rotate(0deg)",
+            transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+          }}
+        />
       </div>
     </>
   );
