@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import NewsBanner from "@/components/news/NewsBanner";
 import NewsNav from "@/components/news/NewsNav";
-import NewsList from "@/components/news/NewsList";
+import { NewsFeatured, NewsArticles } from "@/components/news/NewsList";
 import NewsSidebar from "@/components/news/NewsSidebar";
 
 /* 网狐动态页面 */
@@ -23,9 +23,14 @@ export default function QpnewsPage() {
       />
       <NewsNav title="网狐动态" />
       <div className="w-[1200px] mx-auto my-[40px]">
-        <div className="flex">
+        {/* 顶部推荐文章 - 全宽 */}
+        <div className="mb-[40px]">
+          <NewsFeatured type="qpnews" />
+        </div>
+        {/* 文章列表和侧边栏 - 分栏 */}
+        <div className="flex border-t border-[#dedede]">
           <div className="flex-1 pr-[50px] border-r border-[#dedede]">
-            <NewsList type="qpnews" />
+            <NewsArticles type="qpnews" />
           </div>
           <div className="w-[390px]">
             <NewsSidebar />
