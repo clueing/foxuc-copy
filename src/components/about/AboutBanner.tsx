@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 interface AboutBannerProps {
   title: string;
   subtitle: string;
-  variant: "about" | "culture" | "course";
+  variant: "about" | "culture" | "course" | "case" | "operate";
 }
 
 const variantConfig = {
@@ -22,6 +22,16 @@ const variantConfig = {
     bg: "bg-[url('/images/about/banner-course.png')] bg-cover bg-top",
     titleColor: "text-[#222]",
     subtitleColor: "text-[#ef4ead]",
+  },
+  case: {
+    bg: "bg-[url('/images/contact/banner-contact.png')] bg-cover bg-top",
+    titleColor: "text-white",
+    subtitleColor: "text-white/80",
+  },
+  operate: {
+    bg: "bg-[url('/images/contact/banner-contact.png')] bg-cover bg-top",
+    titleColor: "text-white",
+    subtitleColor: "text-white/80",
   },
 };
 

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
+import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { ArrowLeftIcon, ArrowRightIcon } from "@/components/icons"
 
@@ -78,8 +79,14 @@ export default function Cases() {
     <section className="bg-white py-16">
       <div className="container mx-auto px-4">
         {/* 标题区域 */}
-        <div className="mb-8 text-center">
+        <div className="mb-8 flex items-center justify-between">
           <h2 className="text-3xl font-bold text-gray-800">超过300家成功合作案例</h2>
+          <Link
+            href="/case"
+            className="text-sm text-gray-500 transition-colors hover:text-red-500"
+          >
+            查看更多 &gt;
+          </Link>
         </div>
 
         {/* 轮播区域 */}

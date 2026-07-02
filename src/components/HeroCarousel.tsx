@@ -12,7 +12,7 @@ const slides = [
     title: "U3D至尊版",
     subtitle: "全新框架，精心力作",
     description: "博弈海外棋牌市场、全新风格更符主流审美、英葡主流双语畅游海外",
-    link: "/product-detail/hw/game-app.html",
+    link: "/product",
     bgClass: "bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900",
   },
   {
@@ -20,7 +20,7 @@ const slides = [
     title: "H5环球版",
     subtitle: "三端互通，灵活运营",
     description: "全新Cocos-Creator引擎，TS语言开发、一套代码，三个终端、平台数据互通，降低运营成本",
-    link: "/product-detail/zy/game-app.html",
+    link: "/product/zy",
     bgClass: "bg-gradient-to-br from-purple-900 via-purple-800 to-pink-900",
   },
   {
@@ -28,7 +28,7 @@ const slides = [
     title: "H5极速版",
     subtitle: "更轻量，更高效的移动平台方案",
     description: "专注移动端交互体验、兼容性强，加载轻量、快速满足运营需求",
-    link: "/product-detail/qj/game-u3d-eng.html",
+    link: "/product/qj",
     bgClass: "bg-gradient-to-br from-cyan-900 via-teal-800 to-emerald-900",
   },
   {
@@ -36,7 +36,7 @@ const slides = [
     title: "全球招募",
     subtitle: "海外棋牌手游战略合作伙伴",
     description: "为海内外合法棋牌运营商提供线上平台服务、百人技术团队引领棋牌行业研发技术、一对一全方位专属客服和技术指导",
-    link: "/inter/index.html",
+    link: "/inter",
     bgClass: "bg-gradient-to-br from-orange-900 via-red-800 to-rose-900",
   },
   {
@@ -44,7 +44,7 @@ const slides = [
     title: "全球棋牌游戏定制开发",
     subtitle: "海外棋牌手游战略合作伙伴",
     description: "为海内外合法棋牌运营商提供线上平台服务、百人技术团队引领棋牌行业研发技术、一对一全方位专属客服和技术指导",
-    link: "/product-detail/hw/game-app.html",
+    link: "/product",
     bgClass: "bg-gradient-to-br from-emerald-900 via-green-800 to-lime-900",
   },
   {
@@ -52,7 +52,7 @@ const slides = [
     title: "18年棋牌游戏服务商",
     subtitle: "不忘初心，一路伴行",
     description: "为海内外合法棋牌运营商提供线上平台服务、百人技术团队引领棋牌行业研发技术、一对一全方位专属客服和技术指导",
-    link: "/about/index.html",
+    link: "/about",
     bgClass: "bg-gradient-to-br from-amber-900 via-yellow-800 to-orange-900",
   },
   {
@@ -60,7 +60,7 @@ const slides = [
     title: "倡导绿色健康游戏",
     subtitle: "文明游戏，禁止赌博",
     description: "为海内外合法棋牌运营商提供线上平台服务、百人技术团队引领棋牌行业研发技术、一对一全方位专属客服和技术指导",
-    link: "/product-detail/hw/game-app.html",
+    link: "/product",
     bgClass: "bg-gradient-to-br from-green-900 via-emerald-800 to-teal-900",
   },
 ]

@@ -1,5 +1,7 @@
 "use client"
 
+import Link from "next/link"
+
 // 合作按钮数据接口
 interface PartnerButtonProps {
   label: string
@@ -9,10 +11,10 @@ interface PartnerButtonProps {
 export default function Partnership() {
   // 合作按钮数据
   const buttons: PartnerButtonProps[] = [
-    { label: "合作介绍", href: "#introduction" },
-    { label: "合作流程", href: "#process" },
-    { label: "提交资料", href: "#submit" },
-    { label: "成功案例", href: "#cases" }
+    { label: "合作介绍", href: "/operate" },
+    { label: "合作流程", href: "/operate#flow" },
+    { label: "提交资料" },
+    { label: "成功案例", href: "/operate#case" }
   ]
 
   return (
@@ -26,15 +28,24 @@ export default function Partnership() {
 
         {/* 按钮组 */}
         <div className="flex flex-wrap items-center justify-center gap-4">
-          {buttons.map((button, index) => (
-            <a
-              key={index}
-              href={button.href || "#"}
-              className="inline-flex min-w-[120px] items-center justify-center rounded-lg border border-white bg-transparent px-4 py-2 text-sm font-medium text-white transition-all duration-200 hover:bg-white hover:text-red-500"
-            >
-              {button.label}
-            </a>
-          ))}
+          {buttons.map((button, index) =>
+            button.href ? (
+              <Link
+                key={index}
+                href={button.href}
+                className="inline-flex min-w-[120px] items-center justify-center rounded-lg border border-white bg-transparent px-4 py-2 text-sm font-medium text-white transition-all duration-200 hover:bg-white hover:text-red-500"
+              >
+                {button.label}
+              </Link>
+            ) : (
+              <span
+                key={index}
+                className="inline-flex min-w-[120px] cursor-default items-center justify-center rounded-lg border border-white bg-transparent px-4 py-2 text-sm font-medium text-white/70"
+              >
+                {button.label}
+              </span>
+            )
+          )}
         </div>
       </div>
     </section>

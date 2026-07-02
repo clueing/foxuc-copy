@@ -13,7 +13,7 @@ const products = [
     image: "/images/product1.png",
     description:
       "网狐U3D至尊平台，博弈海外棋牌市场。全新界面风格，更符海外主流审美；英葡主流双语，出海地区全面覆盖。",
-    link: "/product-detail/hw/game-app.html",
+    link: "/product",
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const products = [
     image: "/images/product2.png",
     description:
       "全新Cocos-Creator引擎，TS语言开发。一套代码，三个终端；平台数据互通，降低运营成本。",
-    link: "/product-detail/zy/game-app.html",
+    link: "/product/zy",
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ const products = [
     image: "/images/product3.png",
     description:
       "网狐H5极速版，兼容性强，加载轻量，满足快速运营需求。",
-    link: "/product-detail/qj/game-u3d-eng.html",
+    link: "/product/qj",
   },
 ];
 

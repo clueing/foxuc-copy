@@ -1,5 +1,8 @@
 "use client"
 
+import { useState } from "react"
+import ContactPopup from "./ContactPopup"
+
 // 国际市场优势区组件
 interface AdvantageCardProps {
   title: string
@@ -29,6 +32,9 @@ function AdvantageCard({ title, description, subtitle, englishTitle }: Advantage
 }
 
 export default function International() {
+  // 控制联系弹窗显示/隐藏
+  const [isContactOpen, setIsContactOpen] = useState(false)
+
   // 四个优势卡片数据
   const advantages: AdvantageCardProps[] = [
     {
@@ -64,6 +70,13 @@ export default function International() {
         <div className="mb-12 text-center">
           <h2 className="mb-3 text-3xl font-bold text-gray-800">国际 大势所趋</h2>
           <p className="text-lg text-gray-500">Overseas an irresistable trend</p>
+          {/* 了解更多按钮 - 点击弹出联系二维码 */}
+          <button
+            onClick={() => setIsContactOpen(true)}
+            className="mt-6 rounded-lg bg-red-500 px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-red-600"
+          >
+            了解更多
+          </button>
         </div>
 
         {/* 4列卡片布局 */}
@@ -73,6 +86,12 @@ export default function International() {
           ))}
         </div>
       </div>
+
+      {/* 联系二维码弹窗 */}
+      <ContactPopup
+        isOpen={isContactOpen}
+        onClose={() => setIsContactOpen(false)}
+      />
     </section>
   )
 }

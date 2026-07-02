@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import ContactPopup from "./ContactPopup"
 
 // 区域数据类型定义
 interface RegionData {
@@ -53,6 +54,8 @@ const regions: RegionData[] = [
 export default function Overseas() {
   // 当前选中的区域索引
   const [activeIndex, setActiveIndex] = useState(0)
+  // 控制联系弹窗显示/隐藏
+  const [isContactOpen, setIsContactOpen] = useState(false)
 
   return (
     <section className="bg-gradient-to-b from-[#0a1628] to-[#1a2a44] py-20">
@@ -72,8 +75,11 @@ export default function Overseas() {
           <p className="mb-6 text-[14px] text-white/60">
             百款自研棋牌产品，一手海外联运资料；开辟万亿海外棋牌市场。
           </p>
-          {/* 详情咨询按钮 */}
-          <button className="rounded bg-[#3b82f6] px-6 py-2 text-[14px] font-medium text-white transition-colors hover:bg-[#2563eb]">
+          {/* 详情咨询按钮 - 点击弹出联系二维码 */}
+          <button
+            onClick={() => setIsContactOpen(true)}
+            className="rounded bg-[#3b82f6] px-6 py-2 text-[14px] font-medium text-white transition-colors hover:bg-[#2563eb]"
+          >
             详情咨询
           </button>
         </div>
@@ -107,6 +113,12 @@ export default function Overseas() {
           </p>
         </div>
       </div>
+
+      {/* 联系二维码弹窗 */}
+      <ContactPopup
+        isOpen={isContactOpen}
+        onClose={() => setIsContactOpen(false)}
+      />
     </section>
   )
 }
