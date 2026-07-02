@@ -2,138 +2,182 @@
 
 import { useState, useEffect, useCallback } from "react"
 import Link from "next/link"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import Image from "next/image"
 import { cn } from "@/lib/utils"
 
-// 幻灯片数据
+/* 幻灯片数据 */
 const slides = [
   {
     id: 1,
     title: "U3D至尊版",
     subtitle: "全新框架，精心力作",
-    description: "博弈海外棋牌市场、全新风格更符主流审美、英葡主流双语畅游海外",
+    descriptions: ["博弈海外棋牌市场", "全新风格更符主流审美", "英葡主流双语畅游海外"],
     link: "/product/hw",
-    bgClass: "bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900",
+    image: "/images/home/banner1.jpg",
+    subtitleColor: "text-[#13e7d9]",
+    titleColor: "text-white",
+    descColor: "text-white",
+    btnBg: "bg-white",
+    btnColor: "text-[#222]",
   },
   {
     id: 2,
     title: "H5环球版",
     subtitle: "三端互通，灵活运营",
-    description: "全新Cocos-Creator引擎，TS语言开发、一套代码，三个终端、平台数据互通，降低运营成本",
+    descriptions: ["全新Cocos-Creator引擎，TS语言开发", "一套代码，三个终端", "平台数据互通，降低运营成本"],
     link: "/product/zy",
-    bgClass: "bg-gradient-to-br from-purple-900 via-purple-800 to-pink-900",
+    image: "/images/home/banner2.jpg",
+    subtitleColor: "text-[#87e38f]",
+    titleColor: "text-white",
+    descColor: "text-white",
+    btnBg: "bg-white",
+    btnColor: "text-[#222]",
   },
   {
     id: 3,
     title: "H5极速版",
     subtitle: "更轻量，更高效的移动平台方案",
-    description: "专注移动端交互体验、兼容性强，加载轻量、快速满足运营需求",
+    descriptions: ["专注移动端交互体验", "兼容性强，加载轻量", "快速满足运营需求"],
     link: "/product/qj",
-    bgClass: "bg-gradient-to-br from-cyan-900 via-teal-800 to-emerald-900",
+    image: "/images/home/banner3.jpg",
+    subtitleColor: "text-[#f796ff]",
+    titleColor: "text-white",
+    descColor: "text-white",
+    btnBg: "bg-white",
+    btnColor: "text-[#222]",
   },
   {
     id: 4,
     title: "全球招募",
     subtitle: "海外棋牌手游战略合作伙伴",
-    description: "为海内外合法棋牌运营商提供线上平台服务、百人技术团队引领棋牌行业研发技术、一对一全方位专属客服和技术指导",
+    descriptions: ["为海内外合法棋牌运营商提供线上平台服务", "百人技术团队引领棋牌行业研发技术", "一对一全方位专属客服和技术指导"],
     link: "/inter",
-    bgClass: "bg-gradient-to-br from-orange-900 via-red-800 to-rose-900",
+    image: "/images/home/banner4.jpg",
+    subtitleColor: "text-[#a73f1d]",
+    titleColor: "text-[#222]",
+    descColor: "text-[#222]",
+    btnBg: "bg-[#222]",
+    btnColor: "text-white",
   },
   {
     id: 5,
     title: "全球棋牌游戏定制开发",
     subtitle: "海外棋牌手游战略合作伙伴",
-    description: "为海内外合法棋牌运营商提供线上平台服务、百人技术团队引领棋牌行业研发技术、一对一全方位专属客服和技术指导",
+    descriptions: ["为海内外合法棋牌运营商提供线上平台服务", "百人技术团队引领棋牌行业研发技术", "一对一全方位专属客服和技术指导"],
     link: "/product/hw",
-    bgClass: "bg-gradient-to-br from-emerald-900 via-green-800 to-lime-900",
+    image: "/images/home/banner5.jpg",
+    subtitleColor: "text-[#70d2ff]",
+    titleColor: "text-white",
+    descColor: "text-white",
+    btnBg: "bg-white",
+    btnColor: "text-[#222]",
+    centered: true,
   },
   {
     id: 6,
     title: "18年棋牌游戏服务商",
     subtitle: "不忘初心，一路伴行",
-    description: "为海内外合法棋牌运营商提供线上平台服务、百人技术团队引领棋牌行业研发技术、一对一全方位专属客服和技术指导",
+    descriptions: ["为海内外合法棋牌运营商提供线上平台服务", "百人技术团队引领棋牌行业研发技术", "一对一全方位专属客服和技术指导"],
     link: "/about",
-    bgClass: "bg-gradient-to-br from-amber-900 via-yellow-800 to-orange-900",
+    image: "/images/home/banner6.jpg",
+    subtitleColor: "text-[#ef4ead]",
+    titleColor: "text-[#222]",
+    descColor: "text-[#222]",
+    btnBg: "bg-[#222]",
+    btnColor: "text-white",
   },
   {
     id: 7,
     title: "倡导绿色健康游戏",
     subtitle: "文明游戏，禁止赌博",
-    description: "为海内外合法棋牌运营商提供线上平台服务、百人技术团队引领棋牌行业研发技术、一对一全方位专属客服和技术指导",
+    descriptions: ["为海内外合法棋牌运营商提供线上平台服务", "百人技术团队引领棋牌行业研发技术", "一对一全方位专属客服和技术指导"],
     link: "/product/hw",
-    bgClass: "bg-gradient-to-br from-green-900 via-emerald-800 to-teal-900",
+    image: "/images/home/banner7.jpg",
+    subtitleColor: "text-[#7e00ff]",
+    titleColor: "text-[#222]",
+    descColor: "text-[#222]",
+    btnBg: "bg-[#222]",
+    btnColor: "text-white",
+    centered: true,
   },
 ]
 
+/* 轮播组件 */
 export default function HeroCarousel() {
-  // 当前幻灯片索引
   const [currentIndex, setCurrentIndex] = useState(0)
-  // 是否暂停自动轮播
   const [isPaused, setIsPaused] = useState(false)
 
-  // 切换到下一张幻灯片
   const goToNext = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % slides.length)
   }, [])
 
-  // 切换到上一张幻灯片
   const goToPrev = useCallback(() => {
     setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length)
   }, [])
 
-  // 跳转到指定幻灯片
   const goToSlide = useCallback((index: number) => {
     setCurrentIndex(index)
   }, [])
 
-  // 自动轮播效果
   useEffect(() => {
     if (isPaused) return
-
-    const interval = setInterval(() => {
-      goToNext()
-    }, 5000)
-
+    const interval = setInterval(goToNext, 5000)
     return () => clearInterval(interval)
   }, [isPaused, goToNext])
 
-  // 鼠标悬停时暂停轮播
-  const handleMouseEnter = () => setIsPaused(true)
-  const handleMouseLeave = () => setIsPaused(false)
-
   return (
     <section
-      className="relative w-full h-[600px] overflow-hidden"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      className="relative w-full h-[580px] overflow-hidden min-w-[1250px]"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
     >
       {/* 幻灯片容器 */}
-      <div className="relative w-full h-full">
+      <div className="absolute left-1/2 -translate-x-1/2 w-[1920px] h-[580px] overflow-hidden">
         {slides.map((slide, index) => (
           <div
             key={slide.id}
             className={cn(
-              "absolute inset-0 flex items-center justify-center transition-opacity duration-700",
-              slide.bgClass,
+              "absolute inset-0 transition-opacity duration-700",
               index === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0"
             )}
           >
-            {/* 幻灯片内容 */}
-            <div className="text-center text-white px-4 max-w-4xl mx-auto">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">
+            {/* 背景图 */}
+            <Image
+              src={slide.image}
+              alt={slide.title}
+              fill
+              className="object-cover object-top"
+              priority={index === 0}
+            />
+
+            {/* 内容区域 */}
+            <div
+              className={cn(
+                "absolute top-[146px] left-[460px]",
+                slide.centered && "left-1/2 -translate-x-1/2 text-center"
+              )}
+            >
+              <h1 className={cn("text-[58px] font-bold leading-tight", slide.titleColor)}>
                 {slide.title}
               </h1>
-              <h2 className="text-xl md:text-2xl font-medium mb-6 text-white/90">
+              <p className={cn("text-[32px] font-light mt-1", slide.subtitleColor)}>
                 {slide.subtitle}
-              </h2>
-              <p className="text-base md:text-lg mb-8 text-white/80 max-w-2xl mx-auto">
-                {slide.description}
               </p>
+              <div className="w-[140px] h-[1px] my-3 bg-white/50" />
+              {slide.descriptions.map((desc, i) => (
+                <p key={i} className={cn("text-[16px] mb-1", slide.descColor)}>
+                  {desc}
+                </p>
+              ))}
               <Link
                 href={slide.link}
-                className="inline-block px-8 py-3 border-2 border-white text-white font-medium rounded-lg transition-all duration-300 hover:bg-white hover:text-gray-900"
+                className={cn(
+                  "inline-flex items-center gap-2 mt-[46px] w-[140px] h-[42px] rounded-[9px] transition-all duration-200",
+                  slide.btnBg,
+                  slide.btnColor
+                )}
               >
-                了解更多
+                <span className="ml-4">了解更多</span>
               </Link>
             </div>
           </div>
@@ -143,32 +187,28 @@ export default function HeroCarousel() {
       {/* 左箭头 */}
       <button
         onClick={goToPrev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/30 text-white backdrop-blur-sm transition-all duration-300 hover:bg-black/50"
+        className="absolute left-[30px] top-1/2 -translate-y-1/2 z-20 w-[70px] h-[160px] bg-[url('/images/home/banner-focus.png')] bg-no-repeat bg-left hover:bg-[position:-70px_0] active:bg-[position:-140px_0] transition-all"
         aria-label="上一张"
-      >
-        <ChevronLeft className="w-6 h-6" />
-      </button>
+      />
 
       {/* 右箭头 */}
       <button
         onClick={goToNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/30 text-white backdrop-blur-sm transition-all duration-300 hover:bg-black/50"
+        className="absolute right-[30px] top-1/2 -translate-y-1/2 z-20 w-[70px] h-[160px] bg-[url('/images/home/banner-focus.png')] bg-no-repeat bg-[position:0_-160px] hover:bg-[position:-70px_-160px] active:bg-[position:-140px_-160px] transition-all"
         aria-label="下一张"
-      >
-        <ChevronRight className="w-6 h-6" />
-      </button>
+      />
 
       {/* 底部圆点导航 */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+      <div className="absolute bottom-[34px] left-1/2 -translate-x-1/2 z-20 h-[34px] leading-[34px] bg-[url('/images/home/banner-bottom.png')] bg-no-repeat px-4">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
             className={cn(
-              "w-3 h-3 rounded-full transition-all duration-300",
+              "inline-block mx-[6px] rounded-full transition-all duration-300 align-middle",
               index === currentIndex
-                ? "bg-white scale-110"
-                : "bg-white/50 hover:bg-white/75"
+                ? "w-[14px] h-[14px] bg-[#e60000]"
+                : "w-[10px] h-[10px] bg-[#333]"
             )}
             aria-label={`跳转到第 ${index + 1} 张幻灯片`}
           />
