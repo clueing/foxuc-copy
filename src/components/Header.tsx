@@ -23,11 +23,11 @@ const navItems = [
     label: "产品",
     sub: "PRODUCT",
     href: "/product",
-    match: ["/product"],
+    match: ["/product", "/product/zy", "/product/qj"],
     children: [
       { label: "U3D 至尊版", href: "/product" },
-      { label: "H5 环球版", href: "/product" },
-      { label: "H5 极速版", href: "/product" },
+      { label: "H5 环球版", href: "/product/zy" },
+      { label: "H5 极速版", href: "/product/qj" },
     ],
   },
   {
