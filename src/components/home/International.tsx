@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import ContactPopup from "./ContactPopup"
+import ContactPopup from "@/components/ContactPopup"
 
 // 国际市场优势区组件
 interface AdvantageCardProps {

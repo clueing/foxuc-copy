@@ -1,13 +1,13 @@
 import Header from "@/components/Header";
-import HeroCarousel from "@/components/HeroCarousel";
-import Products from "@/components/Products";
-import Overseas from "@/components/Overseas";
-import International from "@/components/International";
-import WhyChoose from "@/components/WhyChoose";
-import News from "@/components/News";
-import Cases from "@/components/Cases";
-import Partnership from "@/components/Partnership";
-import FollowUs from "@/components/FollowUs";
+import HeroCarousel from "@/components/home/HeroCarousel";
+import Products from "@/components/home/Products";
+import Overseas from "@/components/home/Overseas";
+import International from "@/components/home/International";
+import WhyChoose from "@/components/home/WhyChoose";
+import News from "@/components/home/News";
+import Cases from "@/components/home/Cases";
+import Partnership from "@/components/home/Partnership";
+import FollowUs from "@/components/home/FollowUs";
 import Footer from "@/components/Footer";
 
 /* 狐狸科技首页 */

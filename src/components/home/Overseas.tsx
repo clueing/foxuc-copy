@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import ContactPopup from "./ContactPopup"
+import ContactPopup from "@/components/ContactPopup"
 
 // 区域数据类型定义
 interface RegionData {

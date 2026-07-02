@@ -10,7 +10,7 @@ const products = [
   {
     id: 1,
     title: "至尊版 Supreme",
-    image: "/images/product1.png",
+    image: "/images/home/product1.png",
     description:
       "网狐U3D至尊平台，博弈海外棋牌市场。全新界面风格，更符海外主流审美；英葡主流双语，出海地区全面覆盖。",
     link: "/product/hw",
@@ -18,7 +18,7 @@ const products = [
   {
     id: 2,
     title: "环球版 Global",
-    image: "/images/product2.png",
+    image: "/images/home/product2.png",
     description:
       "全新Cocos-Creator引擎，TS语言开发。一套代码，三个终端；平台数据互通，降低运营成本。",
     link: "/product/zy",
@@ -26,7 +26,7 @@ const products = [
   {
     id: 3,
     title: "极速版 Ultra Speed",
-    image: "/images/product3.png",
+    image: "/images/home/product3.png",
     description:
       "网狐H5极速版，兼容性强，加载轻量，满足快速运营需求。",
     link: "/product/qj",
