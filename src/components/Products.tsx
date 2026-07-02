@@ -13,7 +13,7 @@ const products = [
     image: "/images/product1.png",
     description:
       "网狐U3D至尊平台，博弈海外棋牌市场。全新界面风格，更符海外主流审美；英葡主流双语，出海地区全面覆盖。",
-    link: "/product",
+    link: "/product/hw",
   },
   {
     id: 2,
@@ -97,7 +97,7 @@ export default function Products({ className }: { className?: string }) {
             {/* 按钮组 - 右对齐 */}
             <div className="mb-8 flex justify-end gap-4">
               <Link
-                href="/product"
+                href="/product/hw"
                 className="inline-flex h-10 items-center justify-center rounded-lg border border-[#e44c40] px-6 text-sm font-medium text-[#e44c40] transition-colors hover:bg-[#e44c40] hover:text-white"
               >
                 更多平台

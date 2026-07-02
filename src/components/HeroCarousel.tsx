@@ -12,7 +12,7 @@ const slides = [
     title: "U3D至尊版",
     subtitle: "全新框架，精心力作",
     description: "博弈海外棋牌市场、全新风格更符主流审美、英葡主流双语畅游海外",
-    link: "/product",
+    link: "/product/hw",
     bgClass: "bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900",
   },
   {
@@ -44,7 +44,7 @@ const slides = [
     title: "全球棋牌游戏定制开发",
     subtitle: "海外棋牌手游战略合作伙伴",
     description: "为海内外合法棋牌运营商提供线上平台服务、百人技术团队引领棋牌行业研发技术、一对一全方位专属客服和技术指导",
-    link: "/product",
+    link: "/product/hw",
     bgClass: "bg-gradient-to-br from-emerald-900 via-green-800 to-lime-900",
   },
   {
@@ -60,7 +60,7 @@ const slides = [
     title: "倡导绿色健康游戏",
     subtitle: "文明游戏，禁止赌博",
     description: "为海内外合法棋牌运营商提供线上平台服务、百人技术团队引领棋牌行业研发技术、一对一全方位专属客服和技术指导",
-    link: "/product",
+    link: "/product/hw",
     bgClass: "bg-gradient-to-br from-green-900 via-emerald-800 to-teal-900",
   },
 ]

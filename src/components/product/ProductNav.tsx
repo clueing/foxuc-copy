@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 /* 产品导航数据 */
 const products = [
   {
-    href: "/product",
+    href: "/product/hw",
     label: "至尊版",
     english: "Supreme",
     icon: "/images/product/nav-zz.png",
