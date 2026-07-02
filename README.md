@@ -1,171 +1,109 @@
-# AI Website Cloner Template
+# 狐狸科技官网克隆
 
-<a href="https://github.com/JCodesMore/ai-website-cloner-template/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License" /></a> <a href="https://github.com/JCodesMore/ai-website-cloner-template/stargazers"><img src="https://img.shields.io/github/stars/JCodesMore/ai-website-cloner-template?style=flat" alt="Stars" /></a> <a href="https://discord.gg/hrTSX5yTpB"><img src="https://img.shields.io/discord/1400896964597383279?label=discord" alt="Discord" /></a>
+基于 Next.js 16 + Tailwind CSS v4 的 foxuc.cn 官网克隆项目。
 
-A reusable template for reverse-engineering any website into a clean, modern Next.js codebase using AI coding agents. 
+## 项目简介
 
-**Recommended: [Claude Code](https://docs.anthropic.com/en/docs/claude-code) with Opus 4.7 for best results** — but works with a variety of AI coding agents.
+使用 AI 编程代理将 foxuc.cn 网站逆向工程为现代化的 Next.js 代码库。已完成首页、国际页、产品页、新闻页、关于页、联系页、案例页、合作页的完整克隆。
 
-Point it at a URL, run `/clone-website`, and your AI agent will inspect the site, extract design tokens and assets, write component specs, and dispatch parallel builders to reconstruct every section.
+## 技术栈
 
-## Demo
+- **框架:** Next.js 16 (App Router, React 19, TypeScript strict)
+- **UI:** Tailwind CSS v4 + 自定义样式
+- **图标:** 自定义 SVG 图标组件
+- **部署:** Vercel
 
-[![Watch the demo](docs/design-references/comparison.png)](https://youtu.be/O669pVZ_qr0)
+## 命令
 
-> Click the image above to watch the full demo on YouTube.
+```bash
+npm run dev      # 启动开发服务器
+npm run build    # 生产构建
+npm run lint     # ESLint 检查
+npm run typecheck # TypeScript 检查
+npm run check    # 运行 lint + typecheck + build
+```
 
-## Quick Start
-
-> **Important:** Start by making your own copy with GitHub's **Use this template** button. Do not clone this template repository directly for your website project, and do not open pull requests here with your generated website.
-
-1. **Create your own repository from this template**
-
-   On the GitHub page for this project, click **Use this template**, then click **Create a new repository**.
-
-   Give your new repository a name, choose whether it should be public or private, then click **Create repository**. If GitHub shows an **Include all branches** option, you can leave it off.
-
-   This gives you your own separate project to work in, so your website changes stay in your account instead of coming back to the main template.
-
-2. **Open your new repository on your computer**
-
-   After GitHub creates your copy, open that new repository. Click **Code** and open or clone your new repository with your preferred coding tool.
-
-   If you use the terminal, the command will look like this:
-
-   ```bash
-   git clone https://github.com/YOUR-USERNAME/YOUR-NEW-REPOSITORY.git
-   cd YOUR-NEW-REPOSITORY
-   ```
-
-3. **Install dependencies**
-   ```bash
-   npm install
-   ```
-4. **Start your AI agent** — Claude Code recommended:
-   ```bash
-   claude --chrome
-   ```
-5. **Run the skill**:
-   ```
-   /clone-website <target-url1> [<target-url2> ...]
-   ```
-6. **Customize** (optional) — after the base clone is built, modify as needed
-
-> Using a different agent? Open `AGENTS.md` for project instructions — most agents pick it up automatically.
-
-## Supported Platforms
-
-| Agent                                                         | Status                     |
-| ------------------------------------------------------------- | -------------------------- |
-| [Claude Code](https://docs.anthropic.com/en/docs/claude-code) | **Recommended** — Opus 4.7 |
-| [Codex CLI](https://github.com/openai/codex)                  | Supported                  |
-| [OpenCode](https://opencode.ai/)                              | Supported                  |
-| [GitHub Copilot](https://github.com/features/copilot)         | Supported                  |
-| [Cursor](https://cursor.com/)                                 | Supported                  |
-| [Windsurf](https://codeium.com/windsurf)                      | Supported                  |
-| [Gemini CLI](https://github.com/google-gemini/gemini-cli)     | Supported                  |
-| [Cline](https://github.com/cline/cline)                       | Supported                  |
-| [Roo Code](https://github.com/RooCodeInc/Roo-Code)            | Supported                  |
-| [Continue](https://continue.dev/)                             | Supported                  |
-| [Amazon Q](https://aws.amazon.com/q/developer/)               | Supported                  |
-| [Augment Code](https://www.augmentcode.com/)                  | Supported                  |
-| [Aider](https://aider.chat/)                                  | Supported                  |
-
-## Prerequisites
-
-- [Node.js](https://nodejs.org/) 24+
-- An AI coding agent (see [Supported Platforms](#supported-platforms))
-
-## Tech Stack
-
-- **Next.js 16** — App Router, React 19, TypeScript strict
-- **shadcn/ui** — Radix primitives + Tailwind CSS v4
-- **Tailwind CSS v4** — oklch design tokens
-- **Lucide React** — default icons (replaced by extracted SVGs during cloning)
-
-## How It Works
-
-The `/clone-website` skill runs a multi-phase pipeline:
-
-1. **Reconnaissance** — screenshots, design token extraction, interaction sweep (scroll, click, hover, responsive)
-2. **Foundation** — updates fonts, colors, globals, downloads all assets
-3. **Component Specs** — writes detailed spec files (`docs/research/components/`) with exact computed CSS values, states, behaviors, and content
-4. **Parallel Build** — dispatches builder agents in git worktrees, one per section/component
-5. **Assembly & QA** — merges worktrees, wires up the page, runs visual diff against the original
-
-Each builder agent receives the full component specification inline — exact `getComputedStyle()` values, interaction models, multi-state content, responsive breakpoints, and asset paths. No guessing.
-
-## Use Cases
-
-- **Platform migration** — rebuild a site you own from WordPress/Webflow/Squarespace into a modern Next.js codebase
-- **Lost source code** — your site is live but the repo is gone, the developer left, or the stack is legacy. Get the code back in a modern format
-- **Learning** — deconstruct how production sites achieve specific layouts, animations, and responsive behavior by working with real code
-
-## Not Intended For
-
-- **Phishing or impersonation** — this project must not be used for deceptive purposes, impersonation, or any activity that breaks the law.
-- **Passing off someone's design as your own** — logos, brand assets, and original copy belong to their owners.
-- **Violating terms of service** — some sites explicitly prohibit scraping or reproduction. Check first.
-
-## Project Structure
+## 项目结构
 
 ```
 src/
-  app/              # Next.js routes
-  components/       # React components
-    ui/             # shadcn/ui primitives
-    icons.tsx       # Extracted SVG icons
-  lib/utils.ts      # cn() utility
-  types/            # TypeScript interfaces
-  hooks/            # Custom React hooks
+  app/                    # Next.js 路由页面
+    page.tsx              # 首页
+    inter/                # 国际页
+      page.tsx            # 联运介绍
+      tech/page.tsx       # 技术服务
+    product/              # 产品页
+      page.tsx            # 至尊版
+      hw/page.tsx         # 至尊版详情
+      zy/page.tsx         # 环球版
+      qj/page.tsx         # 极速版
+    news/                 # 新闻页
+      page.tsx            # 棋牌资讯
+      qpnews/page.tsx     # 网狐动态
+      [id]/page.tsx       # 文章详情
+    about/                # 关于页
+      page.tsx            # 关于我们
+      culture/page.tsx    # 企业文化
+      course/page.tsx     # 发展历程
+    contact/page.tsx      # 联系页
+    case/page.tsx         # 案例页
+    operate/page.tsx      # 合作页
+  components/
+    Header.tsx            # 共享导航栏
+    Footer.tsx            # 共享页脚
+    ContactPopup.tsx      # 联系二维码弹窗
+    FloatingButtons.tsx   # 浮动按钮（在线留言+客服中心）
+    SubNav.tsx            # 子页面导航组件
+    icons.tsx             # SVG 图标组件
+    home/                 # 首页专用组件
+    inter/                # 国际页组件
+    product/              # 产品页组件
+    news/                 # 新闻页组件
+    about/                # 关于页组件
+    contact/              # 联系页组件
+    case/                 # 案例页组件
+    operate/              # 合作页组件
+  lib/
+    utils.ts              # cn() 工具函数
 public/
-  images/           # Downloaded images from target
-  videos/           # Downloaded videos from target
-  seo/              # Favicons, OG images
-docs/
-  research/         # Extraction output & component specs
-  design-references/ # Screenshots
-scripts/
-  sync-agent-rules.sh  # Regenerate agent instruction files
-  sync-skills.mjs      # Regenerate /clone-website for all platforms
-AGENTS.md           # Agent instructions (single source of truth)
-CLAUDE.md           # Claude Code config (imports AGENTS.md)
-GEMINI.md           # Gemini CLI config (imports AGENTS.md)
+  images/                 # 图片资源
+    home/                 # 首页图片
+    inter/                # 国际页图片
+    product/              # 产品页图片
+    news/                 # 新闻页图片
+    about/                # 关于页图片
+    contact/              # 联系页图片
+    case/                 # 案例页图片
+    operate/              # 合作页图片
+scripts/                  # 资源下载脚本
 ```
 
-## Commands
+## 页面路由
 
-```bash
-npm run dev    # Start dev server
-npm run build  # Production build
-npm run lint   # ESLint check
-npm run typecheck # TypeScript check
-npm run check  # Run lint + typecheck + build
-```
+| 路由 | 页面 | 说明 |
+|------|------|------|
+| `/` | 首页 | 轮播、产品、海外联运、国际优势、新闻、案例 |
+| `/inter` | 联运介绍 | 海外棋牌联运详情 |
+| `/inter/tech` | 技术服务 | 技术服务详情 |
+| `/product` | 产品（重定向到 /product/hw） | 自动跳转至尊版 |
+| `/product/hw` | U3D至尊版 | 产品详情 |
+| `/product/zy` | H5环球版 | 产品详情 |
+| `/product/qj` | H5极速版 | 产品详情 |
+| `/news` | 棋牌资讯 | 新闻列表 |
+| `/news/qpnews` | 网狐动态 | 新闻列表 |
+| `/news/[id]` | 文章详情 | 动态路由 |
+| `/about` | 关于我们 | 公司介绍 |
+| `/about/culture` | 企业文化 | 文化理念 |
+| `/about/course` | 发展历程 | 时间线 |
+| `/contact` | 联系页 | 联系方式 |
+| `/case` | 案例页 | 合作案例 |
+| `/operate` | 合作页 | 合作运营 |
 
-### If using docker
+## 开发规范
 
-```bash
-docker compose up app --build # build and run the app
-docker compose up dev --build # run the app in dev mode on port 3001
-```
-
-## Updating for Other Platforms
-
-Two source-of-truth files power all platform support. Edit the source, then run the sync script:
-
-| What                   | Source of truth                         | Sync command                       |
-| ---------------------- | --------------------------------------- | ---------------------------------- |
-| Project instructions   | `AGENTS.md`                             | `bash scripts/sync-agent-rules.sh` |
-| `/clone-website` skill | `.claude/skills/clone-website/SKILL.md` | `node scripts/sync-skills.mjs`     |
-
-Each script regenerates the platform-specific copies automatically. Agents that read the source files natively need no regeneration.
-
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=JCodesMore/ai-website-cloner-template&type=Date)](https://star-history.com/#JCodesMore/ai-website-cloner-template&Date)
-
-## License
-
-MIT
+- TypeScript 严格模式，禁止 `any`
+- 组件使用 PascalCase，工具函数使用 camelCase
+- Tailwind 工具类优先，避免内联样式
+- 2 空格缩进
+- 中文注释
+- 使用模板字符串包裹含中文引号的字符串
