@@ -125,13 +125,14 @@ export default function Header() {
                     </p>
                   </Link>
 
-                  {/* 下拉子菜单 - 黑色半透明背景 */}
+                  {/* 下拉子菜单 - 使用背景图片 */}
                   {item.children && (
                     <div
                       className={cn(
-                        "absolute top-[45px] left-1/2 -translate-x-1/2 text-center transition-all duration-100",
-                        item.children.length > 2 ? "w-[368px]" : "w-[246px]",
-                        "bg-black/80 backdrop-blur-sm rounded-b-lg",
+                        "absolute top-[45px] left-1/2 -translate-x-1/2 text-center transition-all duration-100 bg-no-repeat bg-contain",
+                        item.children.length > 2
+                          ? "w-[368px] h-[40px] bg-[url('/images/nav-long.png')]"
+                          : "w-[246px] h-[40px] bg-[url('/images/nav-short.png')]",
                         hoveredIndex === index
                           ? "opacity-100 visible"
                           : "opacity-0 invisible"
