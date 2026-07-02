@@ -33,7 +33,7 @@ export default function AboutBanner({
   const config = variantConfig[variant];
 
   return (
-    <div className="relative w-full h-[480px] mt-[68px] overflow-hidden min-w-[1250px]">
+    <div className="relative w-full h-[480px] overflow-hidden min-w-[1250px]">
       <div
         className={cn(
           "absolute left-1/2 -translate-x-1/2 w-[1920px] h-full",
